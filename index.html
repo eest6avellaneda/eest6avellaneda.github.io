@@ -10,6 +10,7 @@
   />
   <style>
     :root{
+      --azul-950:#08233d;
       --azul-900:#0b2f55;
       --azul-800:#114a84;
       --azul-700:#1d67b2;
@@ -18,17 +19,28 @@
       --blanco:#ffffff;
       --gris-fondo:#f3f7fb;
       --gris-borde:#dbe4ee;
+      --gris-suave:#eef3f8;
       --gris-texto:#607182;
       --texto:#1f2d3a;
       --verde:#1fa463;
+      --verde-100:#e9f9ef;
       --rojo:#c53b3b;
+      --rojo-100:#fff0f0;
+      --amarillo:#c99700;
       --sombra:0 14px 34px rgba(11, 47, 85, 0.12);
+      --radio-xl:30px;
       --radio-lg:22px;
+      --radio-md:16px;
       --ancho:1200px;
     }
 
-    *{ box-sizing:border-box; }
-    html{ scroll-behavior:smooth; }
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
@@ -38,8 +50,15 @@
       line-height:1.6;
     }
 
-    img{ max-width:100%; display:block; }
-    a{ color:inherit; text-decoration:none; }
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
 
     .contenedor{
       width:min(92%, var(--ancho));
@@ -85,14 +104,18 @@
     }
 
     .marca img{
-      width:70px;
-      height:70px;
+      width:72px;
+      height:72px;
       object-fit:contain;
       background:#fff;
       border-radius:50%;
       padding:4px;
       border:1px solid var(--gris-borde);
       box-shadow:var(--sombra);
+    }
+
+    .marca-texto{
+      min-width:0;
     }
 
     .marca-texto .mini{
@@ -134,11 +157,13 @@
       color:var(--azul-900);
     }
 
-    nav a:hover{ color:var(--azul-700); }
+    nav a:hover{
+      color:var(--azul-700);
+    }
 
     .hero{
       background:
-        linear-gradient(135deg, rgba(8,33,60,0.94), rgba(17,74,132,0.88)),
+        linear-gradient(135deg, rgba(8,35,61,0.94), rgba(17,74,132,0.88)),
         url("https://images.unsplash.com/photo-1520388152853-5c2f8c41f2aa?auto=format&fit=crop&w=1600&q=80") center/cover;
       color:#fff;
       padding:78px 0 64px;
@@ -187,6 +212,7 @@
       border-radius:999px;
       font-weight:bold;
       transition:0.2s ease;
+      cursor:pointer;
     }
 
     .btn-principal{
@@ -195,14 +221,18 @@
       box-shadow:var(--sombra);
     }
 
-    .btn-principal:hover{ transform:translateY(-2px); }
+    .btn-principal:hover{
+      transform:translateY(-2px);
+    }
 
     .btn-secundario{
       border:2px solid rgba(255,255,255,0.7);
       color:#fff;
     }
 
-    .btn-secundario:hover{ background:rgba(255,255,255,0.10); }
+    .btn-secundario:hover{
+      background:rgba(255,255,255,0.10);
+    }
 
     .hero-card{
       background:rgba(255,255,255,0.10);
@@ -254,9 +284,13 @@
       margin-bottom:6px;
     }
 
-    section{ padding:70px 0; }
+    section{
+      padding:72px 0;
+    }
 
-    .titulo-seccion{ margin-bottom:28px; }
+    .titulo-seccion{
+      margin-bottom:28px;
+    }
 
     .eyebrow{
       margin:0 0 8px 0;
@@ -301,23 +335,71 @@
       color:var(--azul-900);
     }
 
-    .card p{ margin:0 0 12px 0; }
+    .card p{
+      margin:0 0 12px 0;
+    }
 
     .card ul{
       margin:0;
       padding-left:20px;
     }
 
-    .card li{ margin-bottom:8px; }
+    .card li{
+      margin-bottom:8px;
+    }
 
     .destacado{
       background:linear-gradient(180deg, #f9fcff, #eff7ff);
       border:1px solid #d9ebff;
     }
 
+    .accesos-rapidos{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:18px;
+      margin-top:-34px;
+      position:relative;
+      z-index:5;
+    }
+
+    .acceso{
+      background:#fff;
+      border-radius:20px;
+      padding:20px;
+      box-shadow:var(--sombra);
+      border:1px solid #ebf1f7;
+      text-align:center;
+    }
+
+    .acceso .ico{
+      width:52px;
+      height:52px;
+      border-radius:50%;
+      background:var(--azul-100);
+      color:var(--azul-800);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      margin:0 auto 12px auto;
+      font-size:22px;
+      font-weight:bold;
+    }
+
+    .acceso h4{
+      margin:0 0 6px 0;
+      font-size:18px;
+      color:var(--azul-900);
+    }
+
+    .acceso p{
+      margin:0;
+      font-size:14px;
+      color:var(--gris-texto);
+    }
+
     .autoridades{
       display:grid;
-      grid-template-columns:repeat(3,1fr);
+      grid-template-columns:repeat(4,1fr);
       gap:22px;
     }
 
@@ -417,6 +499,39 @@
       color:#e8f2ff;
     }
 
+    .inscripciones{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:24px;
+    }
+
+    .pasos{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .paso{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:14px;
+      border-radius:16px;
+      background:var(--gris-suave);
+    }
+
+    .paso-num{
+      min-width:38px;
+      height:38px;
+      border-radius:50%;
+      background:var(--azul-800);
+      color:#fff;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:bold;
+    }
+
     .galeria{
       display:grid;
       grid-template-columns:repeat(3,1fr);
@@ -437,7 +552,9 @@
       object-fit:cover;
     }
 
-    .foto .texto{ padding:16px 18px; }
+    .foto .texto{
+      padding:16px 18px;
+    }
 
     .foto .texto h4{
       margin:0 0 8px 0;
@@ -518,7 +635,9 @@
       border-bottom:1px solid #e5edf5;
     }
 
-    .item-contacto:last-child{ border-bottom:none; }
+    .item-contacto:last-child{
+      border-bottom:none;
+    }
 
     .item-contacto strong{
       display:block;
@@ -537,7 +656,8 @@
     }
 
     .formulario input,
-    .formulario textarea{
+    .formulario textarea,
+    .formulario select{
       width:100%;
       border:1px solid #d9e3ed;
       border-radius:14px;
@@ -562,7 +682,9 @@
       cursor:pointer;
     }
 
-    .formulario button:hover{ background:var(--azul-700); }
+    .formulario button:hover{
+      background:var(--azul-700);
+    }
 
     .estado-form{
       display:none;
@@ -574,14 +696,14 @@
 
     .estado-form.ok{
       display:block;
-      background:#e9f9ef;
+      background:var(--verde-100);
       color:#167145;
       border:1px solid #bfe7cd;
     }
 
     .estado-form.error{
       display:block;
-      background:#fff0f0;
+      background:var(--rojo-100);
       color:var(--rojo);
       border:1px solid #f0c9c9;
     }
@@ -601,7 +723,7 @@
 
     .footer-grid{
       display:grid;
-      grid-template-columns:1.2fr 1fr 1fr;
+      grid-template-columns:1.2fr 1fr 1fr 1fr;
       gap:24px;
       padding:34px 0;
     }
@@ -653,23 +775,32 @@
       z-index:999;
     }
 
-    .whatsapp:hover{ transform:scale(1.05); }
+    .whatsapp:hover{
+      transform:scale(1.05);
+    }
 
-    @media (max-width: 1024px){
+    @media (max-width: 1100px){
       .hero-grid,
       .grid-2,
       .autoridades,
       .cards-3,
       .estructura,
+      .inscripciones,
       .galeria,
       .noticias,
       .contacto,
-      .footer-grid{
+      .footer-grid,
+      .accesos-rapidos{
         grid-template-columns:1fr;
       }
 
-      .hero h2{ font-size:42px; }
-      .hero-datos{ grid-template-columns:1fr; }
+      .hero h2{
+        font-size:42px;
+      }
+
+      .hero-datos{
+        grid-template-columns:1fr;
+      }
     }
 
     @media (max-width: 760px){
@@ -678,13 +809,17 @@
         align-items:flex-start;
       }
 
-      nav ul{ justify-content:flex-start; }
+      nav ul{
+        justify-content:flex-start;
+      }
 
       .hero{
         padding:58px 0 44px;
       }
 
-      .hero h2{ font-size:34px; }
+      .hero h2{
+        font-size:34px;
+      }
 
       .titulo-seccion h3,
       .franja h3{
@@ -696,7 +831,13 @@
         height:56px;
       }
 
-      .marca-texto h1{ font-size:20px; }
+      .marca-texto h1{
+        font-size:20px;
+      }
+
+      .accesos-rapidos{
+        margin-top:24px;
+      }
     }
   </style>
 </head>
@@ -712,7 +853,7 @@
   <header>
     <div class="contenedor header-wrap">
       <div class="marca">
-        <img src="logo.png" alt="Logo EEST N° 6 de Avellaneda">
+        <img src="logo.png" alt="Logo EEST N° 6 de Wilde, Avellaneda">
         <div class="marca-texto">
           <p class="mini">Escuela de Educación Secundaria Técnica</p>
           <h1>EEST N° 6 de Wilde · Avellaneda</h1>
@@ -723,10 +864,10 @@
       <nav>
         <ul>
           <li><a href="#inicio">Inicio</a></li>
-          <li><a href="#nosotros">Sobre Nosotros</a></li>
+          <li><a href="#nosotros">La Escuela</a></li>
           <li><a href="#autoridades">Autoridades</a></li>
           <li><a href="#orientaciones">Especialidades</a></li>
-          <li><a href="#estructura">Estructura</a></li>
+          <li><a href="#inscripciones">Inscripciones</a></li>
           <li><a href="#galeria">Galería</a></li>
           <li><a href="#novedades">Novedades</a></li>
           <li><a href="#contacto">Contacto</a></li>
@@ -749,7 +890,7 @@
 
         <div class="hero-botones">
           <a class="btn btn-principal" href="#orientaciones">Ver especialidades</a>
-          <a class="btn btn-secundario" href="#contacto">Contactarse con la escuela</a>
+          <a class="btn btn-secundario" href="#contacto">Realizar una consulta</a>
         </div>
       </div>
 
@@ -779,10 +920,38 @@
     </div>
   </section>
 
+  <div class="contenedor">
+    <div class="accesos-rapidos">
+      <a class="acceso" href="#orientaciones">
+        <div class="ico">E</div>
+        <h4>Especialidades</h4>
+        <p>Conocé las trayectorias formativas de la institución.</p>
+      </a>
+
+      <a class="acceso" href="#inscripciones">
+        <div class="ico">I</div>
+        <h4>Inscripciones</h4>
+        <p>Información orientativa para aspirantes y familias.</p>
+      </a>
+
+      <a class="acceso" href="#novedades">
+        <div class="ico">N</div>
+        <h4>Novedades</h4>
+        <p>Comunicados, actos, proyectos y noticias escolares.</p>
+      </a>
+
+      <a class="acceso" href="#contacto">
+        <div class="ico">C</div>
+        <h4>Contacto</h4>
+        <p>Canales institucionales y formulario de consulta web.</p>
+      </a>
+    </div>
+  </div>
+
   <section id="nosotros">
     <div class="contenedor">
       <div class="titulo-seccion">
-        <p class="eyebrow">Sobre Nosotros</p>
+        <p class="eyebrow">La Escuela</p>
         <h3>Una institución comprometida con la formación técnica</h3>
         <p>
           La EEST N° 6 de Wilde, Avellaneda, desarrolla una propuesta educativa
@@ -812,7 +981,7 @@
           <ul>
             <li>Dirección: Sadi Carnot 36, B1875 Wilde, Provincia de Buenos Aires</li>
             <li>Mail oficial: tecnica6avellaneda@abc.gob.ar</li>
-            <li>Formación técnica pública con trayecto completo</li>
+            <li>Trayectoria técnica completa desde 1° a 7° año</li>
             <li>Especialidades oficiales actualizadas</li>
             <li>Espacio para noticias, proyectos y comunidad educativa</li>
           </ul>
@@ -827,7 +996,7 @@
         <p class="eyebrow">Autoridades</p>
         <h3>Equipo institucional</h3>
         <p>
-          Esta sección está lista para completar con los nombres reales de las autoridades.
+          Esta sección queda preparada para completar con los nombres reales cuando quieras.
         </p>
       </div>
 
@@ -846,8 +1015,14 @@
 
         <div class="persona">
           <div class="icono">J</div>
-          <h4>Jefatura de Área / Taller</h4>
-          <p>Agregar nombre correspondiente</p>
+          <h4>Jefatura</h4>
+          <p>Agregar nombre de Jefatura de Área o Taller</p>
+        </div>
+
+        <div class="persona">
+          <div class="icono">S</div>
+          <h4>Secretaría</h4>
+          <p>Agregar nombre del equipo de Secretaría</p>
         </div>
       </div>
     </div>
@@ -895,7 +1070,7 @@
   <section id="estructura">
     <div class="contenedor">
       <div class="titulo-seccion">
-        <p class="eyebrow">Estructura de la Institución</p>
+        <p class="eyebrow">Estructura Institucional</p>
         <h3>Trayectoria formativa por ciclos</h3>
         <p>
           La propuesta institucional acompaña a los estudiantes desde una base común
@@ -926,6 +1101,66 @@
             Último tramo de formación donde se realizan pasantías, proyectos finales
             o prácticas para aplicar lo aprendido en contextos reales.
           </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="inscripciones">
+    <div class="contenedor">
+      <div class="titulo-seccion">
+        <p class="eyebrow">Inscripciones</p>
+        <h3>Información orientativa para aspirantes y familias</h3>
+        <p>
+          Esta sección queda preparada para publicar fechas, requisitos y documentación.
+          Más adelante se pueden sumar datos reales y formularios específicos.
+        </p>
+      </div>
+
+      <div class="inscripciones">
+        <div class="card">
+          <h4>Cómo iniciar la consulta</h4>
+          <p>
+            Las familias y aspirantes pueden comunicarse con la institución para
+            conocer disponibilidad, requisitos y fechas vinculadas a la inscripción.
+          </p>
+
+          <div class="pasos">
+            <div class="paso">
+              <div class="paso-num">1</div>
+              <div>
+                <strong>Consultar información institucional</strong>
+                <p>Revisar especialidades, ubicación y canales de contacto.</p>
+              </div>
+            </div>
+
+            <div class="paso">
+              <div class="paso-num">2</div>
+              <div>
+                <strong>Preparar documentación</strong>
+                <p>Más adelante se pueden agregar aquí los requisitos reales.</p>
+              </div>
+            </div>
+
+            <div class="paso">
+              <div class="paso-num">3</div>
+              <div>
+                <strong>Enviar consulta</strong>
+                <p>Usar el formulario web o el correo institucional para comunicarse.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card destacado">
+          <h4>Documentación y requisitos</h4>
+          <ul>
+            <li>Espacio para incorporar fechas de inscripción</li>
+            <li>Espacio para publicar requisitos oficiales</li>
+            <li>Espacio para documentación solicitada</li>
+            <li>Espacio para aclaraciones para ingresantes</li>
+            <li>Espacio para enlaces a formularios o sistemas externos</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -1055,13 +1290,13 @@
           </div>
 
           <div class="item-contacto">
-            <strong>Consultas desde la web</strong>
+            <strong>Canal de consultas web</strong>
             <span>El formulario envía los mensajes al correo oficial de la institución.</span>
           </div>
 
           <div class="item-contacto">
             <strong>Horarios de atención</strong>
-            <span>Agregar días y horarios</span>
+            <span>Agregar días y horarios reales más adelante</span>
           </div>
         </div>
 
@@ -1074,6 +1309,13 @@
             <input type="text" name="nombre" placeholder="Nombre y apellido" required>
             <input type="email" name="email" placeholder="Correo electrónico" required>
             <input type="text" name="asunto" placeholder="Asunto" required>
+            <select name="tema">
+              <option value="Consulta general">Consulta general</option>
+              <option value="Inscripciones">Inscripciones</option>
+              <option value="Especialidades">Especialidades</option>
+              <option value="Documentación">Documentación</option>
+              <option value="Otro">Otro</option>
+            </select>
             <textarea name="mensaje" placeholder="Escribí tu consulta" required></textarea>
             <button type="submit" id="btn-enviar">Enviar consulta</button>
           </form>
@@ -1105,12 +1347,21 @@
       </div>
 
       <div class="footer-col">
-        <h4>Secciones</h4>
+        <h4>Institucional</h4>
         <ul>
-          <li><a href="#nosotros">Sobre Nosotros</a></li>
+          <li><a href="#nosotros">La Escuela</a></li>
           <li><a href="#autoridades">Autoridades</a></li>
-          <li><a href="#orientaciones">Especialidades</a></li>
           <li><a href="#estructura">Estructura</a></li>
+          <li><a href="#novedades">Novedades</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Accesos</h4>
+        <ul>
+          <li><a href="#orientaciones">Especialidades</a></li>
+          <li><a href="#inscripciones">Inscripciones</a></li>
+          <li><a href="#contacto">Contacto</a></li>
           <li><a href="#galeria">Galería</a></li>
         </ul>
       </div>
@@ -1152,29 +1403,43 @@
     form.addEventListener("submit", async function (e) {
       e.preventDefault();
 
-      if (SCRIPT_URL === "https://script.google.com/macros/s/AKfycbx0Kwpfypdp6fwmlZt5LfPk9tIwS_LTw9HSvqfdj-qF1ovBZayPepMaa3mLpKjptHJF/exec") {
-        mostrarEstado("error", "Falta configurar la URL del Apps Script en el código de la web.");
-        return;
-      }
-
       btn.disabled = true;
       btn.textContent = "Enviando...";
       estado.className = "estado-form";
       estado.textContent = "";
 
-      try {
-        const formData = new FormData(form);
+      const datos = {
+        nombre: form.nombre.value.trim(),
+        email: form.email.value.trim(),
+        asunto: form.asunto.value.trim() + " [" + form.tema.value + "]",
+        mensaje: form.mensaje.value.trim()
+      };
 
-        await fetch(SCRIPT_URL, {
+      try {
+        const response = await fetch(SCRIPT_URL, {
           method: "POST",
-          body: formData,
-          mode: "no-cors"
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(datos)
         });
 
-        form.reset();
-        mostrarEstado("ok", "Consulta enviada correctamente. La escuela la recibirá en su correo oficial.");
+        let json = null;
+
+        try {
+          json = await response.json();
+        } catch (e) {
+          json = null;
+        }
+
+        if (json && json.ok) {
+          form.reset();
+          mostrarEstado("ok", "Consulta enviada correctamente. La escuela la recibirá en su correo oficial.");
+        } else {
+          mostrarEstado("error", "No se pudo enviar la consulta. Revisá la configuración del Apps Script o intentá nuevamente.");
+        }
       } catch (error) {
-        mostrarEstado("error", "No se pudo enviar la consulta. Probá nuevamente en unos minutos.");
+        mostrarEstado("error", "Ocurrió un problema al enviar la consulta. Intentá nuevamente en unos minutos.");
       } finally {
         btn.disabled = false;
         btn.textContent = "Enviar consulta";
