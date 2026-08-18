@@ -1,0 +1,68 @@
+name: Agregar correo de inscripciones
+
+on:
+  push:
+    branches:
+      - agent/agregar-correo-inscripciones
+    paths:
+      - .github/workflows/add-inscription-email.yml
+
+permissions:
+  contents: write
+
+jobs:
+  update-email:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: agent/agregar-correo-inscripciones
+
+      - name: Agregar correo de inscripciones
+        shell: python
+        run: |
+          from pathlib import Path
+
+          path = Path("index.html")
+          html = path.read_text(encoding="utf-8")
+          email = "inscripcion2025eestn6@gmail.com"
+
+          if email not in html:
+              html = html.replace(
+                  '<li>Mail oficial: tecnica6avellaneda@abc.gob.ar</li>',
+                  '<li>Mail oficial: tecnica6avellaneda@abc.gob.ar</li>\n            <li>Correo de inscripciones: <a href="mailto:inscripcion2025eestn6@gmail.com">inscripcion2025eestn6@gmail.com</a></li>',
+                  1,
+              )
+
+              official_block = '''          <div class="item-contacto">
+            <strong>Correo oficial</strong>
+            <a href="mailto:tecnica6avellaneda@abc.gob.ar" id="mail-oficial">tecnica6avellaneda@abc.gob.ar</a>
+          </div>'''
+              inscription_block = official_block + '''
+
+          <div class="item-contacto">
+            <strong>Correo de inscripciones</strong>
+            <a href="mailto:inscripcion2025eestn6@gmail.com">inscripcion2025eestn6@gmail.com</a>
+          </div>'''
+              html = html.replace(official_block, inscription_block, 1)
+
+              html = html.replace(
+                  '<p>Email: tecnica6avellaneda@abc.gob.ar</p>',
+                  '<p>Email: tecnica6avellaneda@abc.gob.ar</p>\n        <p>Inscripciones: <a href="mailto:inscripcion2025eestn6@gmail.com">inscripcion2025eestn6@gmail.com</a></p>',
+                  1,
+              )
+
+              path.write_text(html, encoding="utf-8")
+
+      - name: Commit y push
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "Sin cambios"
+            exit 0
+          fi
+          git config user.name "ChatGPT Codex"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Agregar correo de inscripciones"
+          git push origin HEAD:agent/agregar-correo-inscripciones
